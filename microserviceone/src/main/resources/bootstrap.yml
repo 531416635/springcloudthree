@@ -1,0 +1,35 @@
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
+
+server:
+  port: 8781
+spring:
+  application:
+    name: microserviceone
+  cloud:
+    config:
+      name: microserviceone
+      label: master
+      profile: dev
+      discovery:
+        enabled: true
+        serviceId: configserver
+
+  rabbitmq:
+    host: 101.89.191.244
+    port: 5672
+    username: abc
+    password: abc
+    virtual-host: /
+zipkin:
+  rabbitmq:
+    queue: zipkin
+
+management:
+  security:
+    enabled: false
+
+

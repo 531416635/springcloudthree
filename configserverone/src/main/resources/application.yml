@@ -1,0 +1,36 @@
+server:
+  #服务注册中心端口号
+  port: 8771
+spring:
+  application:
+    name: configserver
+  cloud:
+      config:
+        server:
+          git:
+            #配置git仓库地址
+            uri: https://github.com/531416635/springcloudconfig.git
+            search-paths: microserviceone
+  #          username:
+  #          password:
+
+  rabbitmq:
+    host: 101.89.191.244
+    port: 5672
+    username: abc
+    password: abc
+    virtual-host: /
+
+  management:
+    security:
+      enabled: false
+
+eureka:
+  client:
+#    #是否向服务注册中心注册自己
+#    register-with-eureka: true
+#    #是否检索服务
+#    fetch-registry: true
+    service-url:
+      #指定服务注册中心的位置,  两个eureka节点集群配置
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/

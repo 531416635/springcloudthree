@@ -1,0 +1,33 @@
+#server:
+#  port: 8771
+#
+#spring:
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          #配置git仓库地址
+#          uri: https://github.com/531416635/springcloudconfig.git
+#          search-paths: microserviceone
+##          username:
+##          password:
+#  application:
+#    name: configserver
+#  rabbitmq:
+#    host: 101.89.191.244
+#    port: 5672
+#    username: abc
+#    password: abc
+#    virtual-host: /
+#management:
+#  security:
+#    enabled: false
+#
+#eureka:
+#  instance:
+#    leaseRenewalIntervalInSeconds: 10
+#  client:
+#    registryFetchIntervalSeconds: 5
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/

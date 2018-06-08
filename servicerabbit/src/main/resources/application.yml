@@ -1,0 +1,21 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: service-rabbit
+
+  rabbitmq:
+    host: 101.89.191.244
+    port: 5672
+    username: abc
+    password: abc
+    virtual-host: /
+
+zipkin:
+  rabbitmq:
+    queue: zipkin
+
+feign:
+  hystrix:
+    enabled: true
+
