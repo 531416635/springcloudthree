@@ -18,6 +18,7 @@
         <module>Turbine</module>
         <module>zipkin</module>
         <module>servicerabbit</module>
+        <module>gatewayzuul</module>
     </modules>
 
     <parent>
