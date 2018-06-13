@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yao.dao2.InterfaceMapper">
+	
+	<parameterMap type="java.util.Map" id="deptMap">  
+    	<parameter property="ReserverSource" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="DeptOwn" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="Pardep_Code" mode="IN" jdbcType="VARCHAR"/>
+	  	<parameter property="cursor" mode="OUT" jdbcType="CURSOR" javaType="ResultSet" resultMap="newsInfoMap"/> 
+	  	<parameter property="returncode" mode="OUT" jdbcType="INTEGER"/>
+	  	<parameter property="errormsg" mode="OUT" jdbcType="VARCHAR"/> 
+	</parameterMap>
+	
+	<parameterMap type="java.util.Map" id="departNameMap">  
+    	<parameter property="ReserverSource" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="DeptOwn" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="DepartCode" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="DepartName" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="EXT1" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="EXT2" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="EXT3" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="Registerdate" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="Location" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="Level" mode="IN" jdbcType="VARCHAR"/>
+	  	<parameter property="cursor" mode="OUT" jdbcType="CURSOR" javaType="ResultSet" resultMap="newsInfoMap"/> 
+	  	<parameter property="returncode" mode="OUT" jdbcType="INTEGER"/>
+	  	<parameter property="errormsg" mode="OUT" jdbcType="VARCHAR"/> 
+	</parameterMap>
+	
+	<parameterMap type="java.util.Map" id="clinicInfoMap">  
+    	<parameter property="ReserverSource" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="DeptOwn" mode="IN" jdbcType="VARCHAR"/>
+    	 <parameter property="EXT1" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="EXT2" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="EXT3" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="doctorNo" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="doctorName" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="doctorTitle" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="specialty" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="deptCode" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="deptName" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="registerdate" mode="IN" jdbcType="VARCHAR"/>
+    	<parameter property="timeInterval" mode="IN" jdbcType="VARCHAR"/>
+	  	<parameter property="cursor" mode="OUT" jdbcType="CURSOR" javaType="ResultSet" resultMap="newsInfoMap"/> 
+	  	<parameter property="returncode" mode="OUT" jdbcType="INTEGER"/>
+	  	<parameter property="errormsg" mode="OUT" jdbcType="VARCHAR"/> 
+	</parameterMap>
+	<!--预约挂号锁号和销号 -->
+	<parameterMap type="java.util.Map" id="lockRecIdInfoMap">
+		<parameter property="LockType" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="ScheduleId" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="PartTimeId" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="timeInterval" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="OrderNo" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="LockTime" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="PatientName" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="IDCard" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="BirthDay" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Sex" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Mobile" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="RecId" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="ReserverSource" mode="IN" jdbcType="VARCHAR" />
+		<parameter property="patientID" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="CURSOR" mode="OUT" jdbcType="CURSOR" javaType="ResultSet" resultMap="newsInfoMap"/>
+		<parameter property="returncode" mode="OUT" jdbcType="INTEGER"/>
+		<parameter property="errormsg" mode="OUT" jdbcType="VARCHAR"/>
+	</parameterMap>
+
+	<!--挂号确认支付并取号 -->
+	<parameterMap type="java.util.Map" id="recIdInfoMap">
+		<parameter property="ScheduleId" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="PartTimeId" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="timeInterval" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="OrderNo" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="patientID" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="IDCard" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="RecId" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Aoper" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="TradeCode" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="tranType" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Amount" mode="IN" jdbcType="DECIMAL"/>
+		<parameter property="TraceNum" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="TrDateTime" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="ReserverSource" mode="IN" jdbcType="VARCHAR" />
+		<parameter property="Ext1" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Ext2" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Ext3" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Ext4" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Ext5" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="CURSOR" mode="OUT" jdbcType="CURSOR" javaType="ResultSet" resultMap="newsInfoMap"/>
+		<parameter property="returncode" mode="OUT" jdbcType="INTEGER"/>
+		<parameter property="errormsg" mode="OUT" jdbcType="VARCHAR"/>
+	</parameterMap>
+
+	<!--确认退号 -->
+	<parameterMap type="java.util.Map" id="backRecIdInfoMap">
+		<parameter property="clinicCode" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="operCode" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="orgCode" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="patientId" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="OrderNo" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="patientName" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="RecId" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="amount" mode="IN" jdbcType="DECIMAL"/>
+		<parameter property="inPara1" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara2" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara3" mode="IN" jdbcType="VARCHAR" />
+		<parameter property="inPara4" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara5" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="CURSOR" mode="OUT" jdbcType="CURSOR" javaType="ResultSet" resultMap="newsInfoMap"/>
+		<parameter property="returncode" mode="OUT" jdbcType="INTEGER"/>
+		<parameter property="errormsg" mode="OUT" jdbcType="VARCHAR"/>
+	</parameterMap>
+
+	<!--就诊卡查询 -->
+	<parameterMap type="java.util.Map" id="cardInfoMap">
+		<parameter property="CardType" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="CardNO" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="CURSOR" mode="OUT" jdbcType="CURSOR" javaType="ResultSet" resultMap="newsInfoMap"/>
+		<parameter property="returncode" mode="OUT" jdbcType="INTEGER"/>
+		<parameter property="errormsg" mode="OUT" jdbcType="VARCHAR"/>
+	</parameterMap>
+
+	<!--电子就诊卡建档 -->
+	<parameterMap type="java.util.Map" id="createCardInfoMap">
+		<parameter property="CardType" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="CardNO" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="PatientName" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="IDCardNum" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Gender" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Birthday" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Address" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="PhoneNum" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Aoper" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Ext1" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Ext2" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Ext3" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="Ext4" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="CURSOR" mode="OUT" jdbcType="CURSOR" javaType="ResultSet" resultMap="newsInfoMap"/>
+		<parameter property="returncode" mode="OUT" jdbcType="INTEGER"/>
+		<parameter property="errormsg" mode="OUT" jdbcType="VARCHAR"/>
+	</parameterMap>
+
+	<!--查询患者存在的诊间待缴费信息 -->
+	<parameterMap type="java.util.Map" id="outpOrdersCostInfoMap">
+		<parameter property="hospitalID" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="sectionCode" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="patientId" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="clinicCode" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara1" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara2" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara3" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara4" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara5" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="CURSOR" mode="OUT" jdbcType="CURSOR" javaType="ResultSet" resultMap="newsInfoMap"/>
+		<parameter property="returncode" mode="OUT" jdbcType="INTEGER"/>
+		<parameter property="errormsg" mode="OUT" jdbcType="VARCHAR"/>
+	</parameterMap>
+
+	<!--HIS确认诊间支付信息 -->
+	<parameterMap type="java.util.Map" id="clinicPaymentInfoMap">
+			<parameter property="hospitalID" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="patientId" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="clinicCode" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="recipeNo" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="TradeCode" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="tranType" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="refNum" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="amount" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="operCode" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="TrDateTime" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara1" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara2" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara3" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara4" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara5" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="CURSOR" mode="OUT" jdbcType="CURSOR" javaType="ResultSet" resultMap="newsInfoMap"/>
+		<parameter property="returncode" mode="OUT" jdbcType="INTEGER"/>
+		<parameter property="errormsg" mode="OUT" jdbcType="VARCHAR"/>
+	</parameterMap>
+
+    <!--患者住院信息查询 -->
+    <parameterMap type="java.util.Map" id="inppatientInfoMap">
+        <parameter property="CardType" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="inHospitalNo" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="hospitalID" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="idCode" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="inPara1" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="inPara2" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="inPara3" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="inPara4" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="inPara5" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="CURSOR" mode="OUT" jdbcType="CURSOR" javaType="ResultSet" resultMap="newsInfoMap"/>
+        <parameter property="returncode" mode="OUT" jdbcType="INTEGER"/>
+        <parameter property="errormsg" mode="OUT" jdbcType="VARCHAR"/>
+    </parameterMap>
+
+
+
+    <!--住院预缴接口 -->
+    <parameterMap type="java.util.Map" id="inprechargeInfoMap">
+        <parameter property="CardType" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="patientId" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="tranType" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="refNum" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="amount" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="operCode" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="deptown" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="TraceNum" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="TrDateTime" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="BankName" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="inPara1" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="inPara2" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="inPara3" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="inPara4" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="inPara5" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="inPara6" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="CURSOR" mode="OUT" jdbcType="CURSOR" javaType="ResultSet" resultMap="newsInfoMap"/>
+        <parameter property="returncode" mode="OUT" jdbcType="INTEGER"/>
+        <parameter property="errormsg" mode="OUT" jdbcType="VARCHAR"/>
+    </parameterMap>
+	<!--检验报告查询 -->
+	<parameterMap type="java.util.Map" id="labResultInfoMap">
+		<parameter property="hospitalID" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="CardType" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="patientId" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara1" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara2" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara3" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara4" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara5" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara6" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="patientno" mode="OUT" jdbcType="VARCHAR"/>
+		<parameter property="patientname" mode="OUT" jdbcType="VARCHAR"/>
+		<parameter property="patientsex" mode="OUT" jdbcType="VARCHAR"/>
+		<parameter property="patientage" mode="OUT" jdbcType="VARCHAR"/>
+		<parameter property="testdate" mode="OUT" jdbcType="VARCHAR"/>
+		<parameter property="CURSOR" mode="OUT" jdbcType="CURSOR" javaType="ResultSet" resultMap="newsInfoMap"/>
+		<parameter property="returncode" mode="OUT" jdbcType="INTEGER"/>
+		<parameter property="errormsg" mode="OUT" jdbcType="VARCHAR"/>
+	</parameterMap>
+
+	<!--检查报告查询 -->
+	<parameterMap type="java.util.Map" id="examResultInfoMap">
+		<parameter property="hospitalID" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="CardType" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="patientId" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara1" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara2" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara3" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara4" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara5" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara6" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="CURSOR" mode="OUT" jdbcType="CURSOR" javaType="ResultSet" resultMap="newsInfoMap"/>
+		<parameter property="returncode" mode="OUT" jdbcType="INTEGER"/>
+		<parameter property="errormsg" mode="OUT" jdbcType="VARCHAR"/>
+	</parameterMap>
+
+
+	<!--病理报告查询 -->
+	<parameterMap type="java.util.Map" id="pathologyResultInfoMap">
+		<parameter property="hospitalID" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="CardType" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="patientId" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara1" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara2" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara3" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara4" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara5" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="inPara6" mode="IN" jdbcType="VARCHAR"/>
+		<parameter property="CURSOR" mode="OUT" jdbcType="CURSOR" javaType="ResultSet" resultMap="newsInfoMap"/>
+		<parameter property="returncode" mode="OUT" jdbcType="INTEGER"/>
+		<parameter property="errormsg" mode="OUT" jdbcType="VARCHAR"/>
+	</parameterMap>
+	<resultMap type="java.util.Map" id="newsInfoMap">
+	</resultMap>
+
+	<select id="getDeptInfos" statementType="CALLABLE" parameterMap="deptMap">
+		 call pkg_app_service.proc_get_deptinfo(?,?,?,?,?,?)
+	</select>
+	
+	<select id="getDeptScheduals" statementType="CALLABLE" parameterMap="departNameMap">
+		call pkg_app_service.proc_get_doctorinfo(?,?,?,?,?,?,?,?,?,?,?,?,?)
+	</select>
+	
+	<select id="getClinicInfos" statementType="CALLABLE" parameterMap="clinicInfoMap">
+		call pkg_app_service.proc_get_clinicinfo(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+	</select>
+
+	<select id="getLockRecidInfos" statementType="CALLABLE" parameterMap="lockRecIdInfoMap">
+		call pkg_app_service.proc_clinic_appoints(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+	</select>
+
+	<select id="getRecidInfos" statementType="CALLABLE" parameterMap="recIdInfoMap">
+		call pkg_app_service.proc_clinic_appointspay(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+	</select>
+
+	<select id="getBackidInfos" statementType="CALLABLE" parameterMap="backRecIdInfoMap">
+		call pkg_app_service.proc_clinic_appointsrefund(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+	</select>
+
+	<select id="getCardInfos" statementType="CALLABLE" parameterMap="cardInfoMap">
+		call pkg_app_service.proc_get_cardinfo(?,?,?,?,?)
+	</select>
+
+	<select id="getCreateCardInfos" statementType="CALLABLE" parameterMap="createCardInfoMap">
+		call pkg_app_service.proc_create_cardinfo(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+	</select>
+
+
+	<select id="getInppatientInfos" statementType="CALLABLE" parameterMap="inppatientInfoMap">
+		call pkg_app_service.proc_get_inppatientinfo(?,?,?,?,?,?,?,?,?,?,?,?)
+	</select>
+
+	<select id="getLabResultInfos" statementType="CALLABLE" parameterMap="labResultInfoMap">
+		call pkg_app_service.proc_get_labresult(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+	</select>
+
+	<select id="getExamResultInfos" statementType="CALLABLE" parameterMap="examResultInfoMap">
+		call pkg_app_service.proc_get_examresult(?,?,?,?,?,?,?,?,?,?,?,?)
+	</select>
+
+	<select id="getPathologyResultInfos" statementType="CALLABLE" parameterMap="pathologyResultInfoMap">
+		call pkg_app_service.proc_get_Pathologyresult(?,?,?,?,?,?,?,?,?,?,?,?)
+	</select>
+
+    <select id="getInprechargeInfos" statementType="CALLABLE" parameterMap="inprechargeInfoMap">
+		call pkg_app_service.proc_prepay_inprecharge(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+	</select>
+
+	<select id="getOutpOrdersCostInfos" statementType="CALLABLE" parameterMap="outpOrdersCostInfoMap">
+		call pkg_app_service.proc_get_outp_orders_cost(?,?,?,?,?,?,?,?,?,?,?,?)
+	</select>
+
+	<select id="getClinicPaymentInfos" statementType="CALLABLE" parameterMap="clinicPaymentInfoMap">
+		call pkg_app_service.proc_clinic_payment(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+	</select>
+</mapper>

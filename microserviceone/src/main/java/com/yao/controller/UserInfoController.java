@@ -21,6 +21,8 @@ public class UserInfoController {
     @Autowired
     UserInfoService service;
 
+
+
     /**
      * 插入数据
      * @param model

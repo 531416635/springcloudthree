@@ -22,17 +22,17 @@ import java.sql.SQLException;
 
 @Configuration
 @RefreshScope// 刷新配置文件
-@MapperScan("com.yao.dao") //配置扫描mapper接口的地址
-public class DruidConfiguration {
+@MapperScan("com.yao.dao2") //配置扫描mapper接口的地址
+public class DruidConfigurationOracle {
 
-    private static Logger logger = LoggerFactory.getLogger(DruidConfiguration.class);
-    @Value("${spring.datasource.first.url}")
+    private static Logger logger = LoggerFactory.getLogger(DruidConfigurationOracle.class);
+    @Value("${spring.datasource.three.url}")
     private String dbUrl;
-    @Value("${spring.datasource.first.username}")
+    @Value("${spring.datasource.three.username}")
     private String username;
-    @Value("${spring.datasource.first.password}")
+    @Value("${spring.datasource.three.password}")
     private String password;
-    @Value("${spring.datasource.first.driverClassName}")
+    @Value("${spring.datasource.three.driverClassName}")
     private String driverClassName;
     @Value("${spring.datasource.initialSize}")
     private int initialSize;
@@ -70,9 +70,9 @@ public class DruidConfiguration {
     private String loginPassword;
 
 
-    @Value("${mybatis.first.mapper-locations}")
+    @Value("${mybatis.three.mapper-locations}")
     private String mapperLocations;
-    @Value("${mybatis.first.type-aliases-package}")
+    @Value("${mybatis.three.type-aliases-package}")
     private String typeAliasesPackage;
 
 

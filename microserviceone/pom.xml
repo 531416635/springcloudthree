@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>micro-service-one</artifactId>
+    <packaging>war</packaging>
 
     <dependencyManagement>
         <dependencies>
@@ -141,21 +142,36 @@
             <version>2.6.0</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>my-jar.ojdbc6</groupId>   <!-- 自己随便取 -->
+            <artifactId>ojdbc6</artifactId> <!-- 自己随便取 -->
+            <version>1.0</version><!-- 自己随便取 -->
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/ojdbc6.jar</systemPath>
+        </dependency>
+
     </dependencies>
 
 
     <build>
         <plugins>
             <plugin>
-                <!--skip deploy (this is just a test module) -->
-                <artifactId>maven-deploy-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.5</version>
                 <configuration>
-                    <skip>true</skip>
+                    <warName>microserviceone</warName>
+                    <webResources>
+                        <resource>
+                            <directory>${project.basedir}/lib</directory>
+                            <targetPath>WEB-INF/lib/</targetPath>
+                            <includes>
+                                <include>**/*.jar</include>
+                            </includes>
+                        </resource>
+                    </webResources>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
